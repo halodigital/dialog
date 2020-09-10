@@ -1,0 +1,30 @@
+<div class="halo-dialog-backdrop">
+
+    <div class="halo-dialog {{cssClass}}" [class.shake]="hasError">
+
+        <button class="halo-dialog-close" type="button" (click)="cancel()">
+            <i class="icon-close"></i>
+        </button>
+
+        <header *ngIf="title || subtitle">
+            <h2 *ngIf="title">{{title}}</h2>
+            <h5 *ngIf="subtitle">{{subtitle}}</h5>
+        </header>
+
+        <main>
+            <!-- CONTENT -->
+        </main>
+
+        <footer>
+            <ng-container *ngIf="!isLoading">
+                <button #confirmButton type="button" (click)="confirm()"><span>{{confirmCaption}}</span></button>
+                <button *ngIf="customActionCaption" type="button" (click)="customAction()"><span>{{customActionCaption}}</span></button>
+                <button type="button" (click)="cancel()"><span>{{cancelCaption}}</span></button>
+            </ng-container>
+
+            <halo-loading *ngIf="isLoading"></halo-loading>
+        </footer>
+
+    </div>
+
+</div>
